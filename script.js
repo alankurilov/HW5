@@ -13,20 +13,26 @@ class Post{
         this.description = description;
     }
     fillPost(x){
-        var origPost = document.getElementById("origCard")
-        for(var i = 0; i < courses.length; i++){
-            var cloneCard = origCard.cloneNode(true)
-            var cardBox = document.getElementsByClassName("cardBox")[0]
-            cardBox.appendChild(cloneCard)
-            var mainText = cloneCard.getElementsByClassName("mainText")[0]
-            mainText.innerHTML = courses[i]
-        }        
+        var origPost = document.getElementById("origPost")
+        var clonePost = origPost.cloneNode(true)
+        var cardBox = document.getElementById("cardBox")
+        cardBox.appendChild(clonePost)
+        var authorName = clonePost.getElementById("authorName")
+        authorName.innerHTML = authorName
+        var newComment = clonePost.getElementById("comment")
+        newComment.innerHTML = description
+    
     }
 }
 
 myObjects = []
 for(var i = 0; i < data.length; i++){
     let myPost = new Post(data[i][0] , data[i][1], data[i][2] , data[i][3])
+    myPost.fillPost
     myObjects.push(myPost)
 }
 console.log(myObjects)
+
+for(var i = 0; i < data.length; i++){
+    myObjects[i].fillPost
+}
